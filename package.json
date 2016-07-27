@@ -10,7 +10,6 @@
   "author": "4iar",
   "license": "MIT",
   "dependencies": {
-    "chrono-node": "^1.2.4",
     "express": "^4.14.0",
     "moment": "^2.14.1",
     "strftime": "^0.9.2"
