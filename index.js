@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const strftime = require('strftime')
 const chrono = require('chrono-node')
