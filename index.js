@@ -4,7 +4,7 @@ const express = require('express');
 const strftime = require('strftime')
 const chrono = require('chrono-node')
 
-const formatDateAsNatural = require('./formatDateAsNatural');
+const createJsonResponse = require('./createJsonResponse');
 
 
 const app = express();
@@ -24,13 +24,11 @@ app.get('/:date', (request, response) => {
       let d = dateObj[0].start.date();
       d.setHours(0, 0, 0, 0);  // force time to 12 am
 
-      time.natural = formatDateAsNatural(d);
-      time.unix = d.getTime() / 1000;
+      time = createJsonResponse(d);
     }
   } else {
     dateObj = new Date(parseInt(dateStr) * 1000);
-    time.natural = formatDateAsNatural(dateObj);
-    time.unix = parseInt(dateStr);
+    time = createJsonResponse(dateObj);
   }
 
   response.json(time);
