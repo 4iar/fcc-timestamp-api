@@ -15,19 +15,19 @@ const port = process.env.PORT || 8080;
 app.get('/:date', (request, response) => {
   const dateStr = request.params.date;
 
-  let time = {natural: null, unix: null};
+  let responseObj = {natural: null, unix: null};
 
   if (isNaN(Number(dateStr))) {
     const d = moment(dateStr);
     if (d.isValid()) {
-      time = createJsonResponse(d.toDate());
+      responseObj = createJsonResponse(d.toDate());
     }
   } else {
     const d = moment.unix(Number(dateStr));
-    time = createJsonResponse(d.toDate());
+    responseObj = createJsonResponse(d.toDate());
   }
 
-  response.json(time);
+  response.json(responseObj);
 });
 
 app.listen(port);
